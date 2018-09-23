@@ -4,7 +4,14 @@ public class Course {
 
 	private String CourseName = null;
 	private int CourseCapacity = 0;
-	private int CourseTime = 0;;
+	private int CourseTime = 0;
+	public Course() {
+	}
+	public void setCourse(String courseName, int courseCapacity, int courseTime) {
+		CourseName = courseName;
+		CourseCapacity = courseCapacity;
+		CourseTime = courseTime;
+	}
 	public String getCourseName() {
 		return CourseName;
 	}

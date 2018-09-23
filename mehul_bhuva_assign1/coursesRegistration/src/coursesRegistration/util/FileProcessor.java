@@ -33,15 +33,27 @@ public class FileProcessor {
 			 while(sc.hasNextLine()){
 		            String[] split = sc.nextLine().split(" ");
 		            Student sd = new Student();
-		            String Preference[] = new String[6];
-		            Preference[0] =  split[1].replaceAll(",", "");
-		            Preference[1] =  split[2].replaceAll(",", "");
-		            Preference[2] =  split[3].replaceAll(",", "");
-		            Preference[3] =  split[4].replaceAll(",", "");
-		            Preference[4] =  split[5].replaceAll(",", "");
-		            Preference[5] =  split[6].replaceAll(";", "");
-		            sd.setPreferences(Preference);
+		            ArrayList<String> preferences = new ArrayList<String>();
+		            preferences.add(split[1].replaceAll(",", ""));
+		            preferences.add(split[2].replaceAll(",", ""));
+		            preferences.add(split[3].replaceAll(",", ""));
+		            preferences.add(split[4].replaceAll(",", ""));
+		            preferences.add(split[5].replaceAll(",", ""));
+		            preferences.add(split[6].replaceAll(";", ""));
+		            sd.setPreferences(preferences);
 		            String studentlevel = split[8];
+		            if(studentlevel.equalsIgnoreCase("FIRST_YEAR"))
+		            	{
+		            	sd.setLevelrank(3);
+		            	}
+		            else if(studentlevel.equalsIgnoreCase("SECOND_YEAR"))
+		            {
+		            	sd.setLevelrank(2);	
+		            }
+		            else if(studentlevel.equalsIgnoreCase("THIRD_YEAR"))
+		            {
+		            	sd.setLevelrank(1);	
+		            }
 		            sd.setStudent_level(studentlevel);
 		            CourseRegistration.put(split[0], sd); 
 		        }
