@@ -6,7 +6,10 @@ import java.util.HashMap;
 
 import coursesRegistration.scheduler.scheduler;
 import coursesRegistration.util.Course;
+import coursesRegistration.util.FileDisplayInterface;
 import coursesRegistration.util.FileProcessor;
+import coursesRegistration.util.Results;
+import coursesRegistration.util.StdoutDisplayInterface;
 import coursesRegistration.util.Student;
 
 /**
@@ -37,7 +40,12 @@ public class Driver {
 				HashMap<String, Student> studentdetails = fp.readStudentData();
 				ArrayList<Course> Courselist =fp.readCourseData();
 				scheduler objscheduler = new scheduler();
-				objscheduler.courseSchedular(studentdetails,Courselist);
+				studentdetails = objscheduler.courseSchedular(studentdetails,Courselist);
+				StdoutDisplayInterface sdi=new Results();
+				sdi.writeconsole(studentdetails);
+				FileDisplayInterface fdi=new Results();
+				fdi.writeFile(studentdetails, "registration_results.txt");
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

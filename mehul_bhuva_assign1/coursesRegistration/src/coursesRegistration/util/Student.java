@@ -6,12 +6,12 @@ public class Student {
 
 	private ArrayList<String> preferences = new ArrayList<String>();
 	private String student_level = null;
-	private ArrayList<String> courseallocated = new ArrayList<String>();
+	private ArrayList<Course> courseallocated = new ArrayList<Course>();
 	private boolean wait = false;
 	private Integer levelrank = 0; 
 	public Student() {
 	}
-	public void setStudent(ArrayList<String> preferences, String student_level, ArrayList<String> courseallocated, boolean wait,
+	public void setStudent(ArrayList<String> preferences, String student_level, ArrayList<Course> courseallocated, boolean wait,
 			Integer levelrank) {
 		this.preferences = preferences;
 		this.student_level = student_level;
@@ -22,6 +22,11 @@ public class Student {
 	public Integer getLevelrank() {
 		return levelrank;
 	}
+	@Override
+	public String toString() {
+		return "Student [preferences=" + preferences + ", student_level=" + student_level + ", courseallocated="
+				+ courseallocated + ", wait=" + wait + ", levelrank=" + levelrank + "]";
+	}
 	public void setLevelrank(Integer levelrank) {
 		this.levelrank = levelrank;
 	}
@@ -31,10 +36,10 @@ public class Student {
 	public void setPreferences(ArrayList<String> preferences) {
 		this.preferences = preferences;
 	}
-	public ArrayList<String> getCourseallocated() {
+	public ArrayList<Course> getCourseallocated() {
 		return courseallocated;
 	}
-	public void setCourseallocated(ArrayList<String> courseallocated) {
+	public void setCourseallocated(ArrayList<Course> courseallocated) {
 		this.courseallocated = courseallocated;
 	}
 	public boolean isWait() {

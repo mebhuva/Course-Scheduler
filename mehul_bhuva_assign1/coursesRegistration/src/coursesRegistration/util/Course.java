@@ -24,6 +24,11 @@ public class Course {
 	public void setCourseCapacity(int courseCapacity) {
 		CourseCapacity = courseCapacity;
 	}
+	@Override
+	public String toString() {
+		return "Course [CourseName=" + CourseName + ", CourseCapacity=" + CourseCapacity + ", CourseTime=" + CourseTime
+				+ "]";
+	}
 	public int getCourseTime() {
 		return CourseTime;
 	}

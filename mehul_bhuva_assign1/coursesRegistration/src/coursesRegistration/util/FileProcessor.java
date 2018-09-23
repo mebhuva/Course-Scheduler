@@ -17,6 +17,14 @@ public class FileProcessor {
 		this.courseInfo = new File(args[1]);
 	}
 	
+
+	@Override
+	public String toString() {
+		return "FileProcessor [student_coursePref=" + student_coursePref + ", courseInfo=" + courseInfo
+				+ ", CourseRegistration=" + CourseRegistration + ", Courselist=" + Courselist + "]";
+	}
+
+
 	public void fileExists()
 	{
 		System.out.println(student_coursePref + (student_coursePref.exists()? " is found in the source folder " : " is missing in the source folder "));
