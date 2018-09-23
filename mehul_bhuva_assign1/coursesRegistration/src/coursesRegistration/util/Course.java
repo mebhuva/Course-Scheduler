@@ -4,7 +4,7 @@ public class Course {
 
 	private String CourseName = null;
 	private int CourseCapacity = 0;
-	private int CourseTime = 0;
+	private int CourseTime = 0;;
 	public String getCourseName() {
 		return CourseName;
 	}
@@ -21,6 +21,6 @@ public class Course {
 		return CourseTime;
 	}
 	public void setCourseTime(int courseTime) {
-		CourseTime = courseTime;
+		this.CourseTime = courseTime;
 	}
 }

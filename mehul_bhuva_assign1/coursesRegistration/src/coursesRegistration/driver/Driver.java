@@ -1,8 +1,11 @@
 package coursesRegistration.driver;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import coursesRegistration.scheduler.scheduler;
+import coursesRegistration.util.Course;
 import coursesRegistration.util.FileProcessor;
 import coursesRegistration.util.Student;
 
@@ -32,6 +35,9 @@ public class Driver {
 				FileProcessor fp = new FileProcessor(args);
 				fp.fileExists();
 				HashMap<String, Student> studentdetails = fp.readStudentData();
+				ArrayList<Course> Courselist =fp.readCourseData();
+				scheduler objscheduler = new scheduler();
+				objscheduler.courseSchedular(studentdetails,Courselist);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

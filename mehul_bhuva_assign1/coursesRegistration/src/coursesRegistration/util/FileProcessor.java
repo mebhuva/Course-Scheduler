@@ -57,10 +57,15 @@ public class FileProcessor {
 	public ArrayList<Course> readCourseData() throws FileNotFoundException
 	{
 		try {
+			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(courseInfo);
 			 while(sc.hasNextLine()){
-				 String[] split = sc.nextLine().split(" ");
-				 
+				 String[] split = sc.nextLine().split("\\W");
+				 Course objCourse = new Course();
+				 objCourse.setCourseTime(Integer.parseInt(split[6]));
+				 objCourse.setCourseCapacity(Integer.parseInt(split[2]));
+				 objCourse.setCourseName(split[0]);
+				 Courselist.add(objCourse);
 			 }
 			
 		} catch (Exception e) {
