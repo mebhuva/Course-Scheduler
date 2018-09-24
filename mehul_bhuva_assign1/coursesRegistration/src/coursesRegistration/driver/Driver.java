@@ -25,30 +25,35 @@ public class Driver {
 		 * argument value is not given java takes the default value specified in
 		 * build.xml. To avoid that, below condition is used
 		 */
-		if (args.length != 2 || args[0].equals("${arg0}") || args[1].equals("${arg1}")) {
+		if (args.length != 3 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
 
 			System.err.println("Error: Incorrect number of arguments. Program accepts 2 argumnets.");
 			System.exit(0);
 		}
 		else
 		{
-			//System.out.println(args[0] + "   " +args[1]);
-			
 			try {
 				FileProcessor fp = new FileProcessor(args);
-				fp.fileExists();
-				HashMap<String, Student> studentdetails = fp.readStudentData();
-				ArrayList<Course> Courselist =fp.readCourseData();
-				scheduler objscheduler = new scheduler();
-				studentdetails = objscheduler.courseSchedular(studentdetails,Courselist);
+				int check = fp.fileExists();//checking if file exists or not in the directory
+				if(check == 0)
+				{
+					System.out.println("File not found");
+					System.exit(0);
+				}
+				HashMap<String, Student> studentdetails = fp.readStudentData();//reading student fill data
+				ArrayList<Course> Courselist =fp.readCourseData();//reading course fill data
+				scheduler objscheduler = new scheduler();//object to call courseSchedular method to allocate courses to the student
+				studentdetails = objscheduler.courseSchedular(studentdetails,Courselist);//courseScheduler method to get allocated courses
 				StdoutDisplayInterface sdi=new Results();
-				sdi.writeconsole(studentdetails);
+				sdi.writeconsole(studentdetails);//writing output on console
 				FileDisplayInterface fdi=new Results();
-				fdi.writeFile(studentdetails, "registration_results.txt");
-				
+				fdi.writeFile(studentdetails, args[2]);//writing output in registration_results file
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			finally
+			{
+				
 			}
 			
 			

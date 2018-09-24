@@ -24,14 +24,20 @@ public class FileProcessor {
 				+ ", CourseRegistration=" + CourseRegistration + ", Courselist=" + Courselist + "]";
 	}
 
-
-	public void fileExists()
+//method check the file exists or not 
+	public int fileExists()
 	{
-		System.out.println(student_coursePref + (student_coursePref.exists()? " is found in the source folder " : " is missing in the source folder "));
-		System.out.println(courseInfo + (courseInfo.exists()? " is found in the source folder " : " is missing in the source folder "));
+			if(!student_coursePref.exists() || !courseInfo.exists())
+			{
+				return 0;
+			}
+			else
+			{
+				return 1;
+			}
 	}
 	
-	
+	//readStudentData function returns student data
 	public HashMap<String, Student> readStudentData() throws FileNotFoundException
 	{
 		
@@ -49,7 +55,7 @@ public class FileProcessor {
 		            preferences.add(split[5].replaceAll(",", ""));
 		            preferences.add(split[6].replaceAll(";", ""));
 		            sd.setPreferences(preferences);
-		            String studentlevel = split[8];
+		            String studentlevel = split[8];//student level added to sort student object based on priority
 		            if(studentlevel.equalsIgnoreCase("FIRST_YEAR"))
 		            	{
 		            	sd.setLevelrank(3);
@@ -60,7 +66,7 @@ public class FileProcessor {
 		            }
 		            else if(studentlevel.equalsIgnoreCase("THIRD_YEAR"))
 		            {
-		            	sd.setLevelrank(1);	
+		            	sd.setLevelrank(1);
 		            }
 		            sd.setStudent_level(studentlevel);
 		            CourseRegistration.put(split[0], sd); 
@@ -69,11 +75,15 @@ public class FileProcessor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 finally
+			{
+				
+			}
 		
 		return CourseRegistration;
 		
 	}
-	
+	//readCourseData function returns Course data
 	public ArrayList<Course> readCourseData() throws FileNotFoundException
 	{
 		try {
@@ -91,6 +101,10 @@ public class FileProcessor {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally
+		{
+			
 		}
 		return Courselist;
 		
